@@ -984,6 +984,14 @@ body {
         font-size: clamp(12px, 3.8vw, 16px);
     }
 
+    /* 直式螢幕：避免較長拼音(例如 tshiūnn) 溢出格子 */
+    .tone-grid .roman-row td.long-text {
+        font-size: clamp(9px, 3.2vw, 13px);
+        line-height: 1.05;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
     .tone-grid .tone-row td {
         font-size: clamp(12px, 3.6vw, 16px);
     }
