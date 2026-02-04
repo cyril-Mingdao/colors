@@ -768,7 +768,238 @@ body {
     .options {
         flex-direction: column;
     }
-}</style>
+}
+
+
+/* 直式螢幕最佳化：避免內容溢出、縮小比例、提升可操作性 */
+@media (orientation: portrait) {
+    /* 使用更穩定的視窗高度，避免手機瀏覽器工具列造成跳動 */
+    body {
+        height: 100vh;
+        height: 100svh;
+    }
+
+    .cover-screen {
+        height: 100vh;
+        height: 100svh;
+    }
+
+    .cover-image {
+        height: 100vh;
+        height: 100svh;
+    }
+
+    .start-button {
+        font-size: clamp(18px, 5vw, 26px);
+        padding: 1.6vh 6vw;
+        bottom: 3vh;
+        bottom: calc(3vh + env(safe-area-inset-bottom));
+    }
+
+    /* 遊戲頁面：直式全螢幕，留出安全區與可滾動區 */
+    .game-container {
+        width: 100vw;
+        height: 100vh;
+        height: 100svh;
+        border-radius: 0;
+        padding: 1vh 2.5vw;
+        padding-bottom: calc(1vh + env(safe-area-inset-bottom));
+    }
+
+    .phonetic-page {
+        height: 100vh;
+        height: 100svh;
+        padding: 1.6vh 2.5vw;
+        padding-bottom: calc(1vh + env(safe-area-inset-bottom));
+    }
+
+    .header {
+        margin-bottom: 0.6vh;
+    }
+
+    .main-title {
+        font-size: clamp(22px, 7vw, 36px);
+        line-height: 1.05;
+        margin-bottom: 0.4vh;
+    }
+
+    .subtitle {
+        font-size: clamp(14px, 4.2vw, 20px);
+        line-height: 1.05;
+    }
+
+    .question-header {
+        padding: 0.9vh 2.2vw;
+        margin-bottom: 0.8vh;
+        gap: 2vw;
+    }
+
+    .question-number {
+        font-size: clamp(14px, 4.2vw, 20px);
+    }
+
+    .score {
+        font-size: clamp(13px, 4vw, 18px);
+    }
+
+    .question-content {
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .question-image {
+        margin-bottom: 1vh;
+    }
+
+    .question-image img {
+        max-height: 26vh;
+        border-radius: 12px;
+    }
+
+    .question-text {
+        font-size: clamp(26px, 9vw, 44px);
+        line-height: 1.05;
+        margin-bottom: 0.6vh;
+    }
+
+    .hint-text {
+        font-size: clamp(18px, 5.5vw, 26px);
+        line-height: 1.15;
+        margin-bottom: 1.2vh;
+        margin-top: 0.4vh;
+    }
+
+    .options-and-controls {
+        gap: 1.2vh;
+    }
+
+    .options {
+        gap: 1.2vh;
+    }
+
+    .option-btn {
+        font-size: clamp(22px, 6vw, 36px);
+        padding: 1.2vh 3.2vw;
+        gap: 3vw;
+        border-width: 2px;
+    }
+
+    .option-btn .option-label {
+        font-size: clamp(16px, 4.5vw, 22px);
+        width: 12vw;
+        height: 12vw;
+        min-width: 38px;
+        min-height: 38px;
+        max-width: 46px;
+        max-height: 46px;
+    }
+
+    .answer-box {
+        min-width: 70vw;
+        min-height: 22vh;
+        font-size: clamp(70px, 20vw, 130px);
+        border-width: 5px;
+        border-radius: 18px;
+    }
+
+    .answer-box.revealed {
+        font-size: clamp(44px, 10vw, 80px);
+    }
+
+    .controls {
+        gap: 2.5vw;
+    }
+
+    .control-btn {
+        font-size: clamp(12px, 3.8vw, 16px);
+        padding: 1.2vh 4vw;
+        border-radius: 10px;
+    }
+
+    .jump-menu {
+        max-width: 94vw;
+        max-height: 82svh;
+        padding: 1.8vh 4vw;
+    }
+
+    .jump-menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 1.2vh;
+    }
+
+    /* 自學頁面(台羅拼音系統)：直式時文字與表格縮放，避免擠壓/溢出 */
+    .phonetic-title {
+        font-size: clamp(18px, 5.6vw, 30px);
+        padding: 1.1vh;
+        margin-bottom: 1vh;
+    }
+
+    .phonetic-container {
+        grid-template-columns: 1fr;
+        gap: 1.2vh;
+        padding: 0;
+    }
+
+    .phonetic-section {
+        padding: 1vh 2.2vw;
+    }
+
+    .phonetic-section h3 {
+        font-size: clamp(18px, 5vw, 26px);
+        margin-bottom: 1vh;
+        padding-bottom: 0.6vh;
+    }
+
+    .phonetic-grid .header-row th,
+    .tone-grid .header-row th {
+        font-size: clamp(12px, 3.4vw, 16px);
+        padding: 0.8vh 1.2vw;
+    }
+
+    .phonetic-grid th,
+    .phonetic-grid td,
+    .tone-grid th,
+    .tone-grid td {
+        padding: 0.7vh 1.2vw;
+    }
+
+    .category {
+        font-size: clamp(12px, 3.4vw, 16px);
+    }
+
+    .roman {
+        font-size: clamp(14px, 4.2vw, 18px);
+    }
+
+    .bopomofo {
+        font-size: clamp(12px, 3.6vw, 16px);
+    }
+
+    .tone-grid .animal-row td {
+        font-size: clamp(14px, 4.2vw, 18px);
+    }
+
+    .tone-grid .roman-row td {
+        font-size: clamp(12px, 3.8vw, 16px);
+    }
+
+    .tone-grid .tone-row td {
+        font-size: clamp(12px, 3.6vw, 16px);
+    }
+
+    .vowel-content span {
+        font-size: clamp(12px, 3.6vw, 16px);
+        padding: 0.4vh 1.6vw;
+        margin: 0.2vh;
+    }
+
+    .tone-note {
+        font-size: clamp(12px, 3.5vw, 16px);
+        padding: 0.9vh;
+    }
+}
+
+</style>
 </head>
 <body>
 <div class="cover-screen" id="coverScreen">
