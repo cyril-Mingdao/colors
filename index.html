@@ -2199,31 +2199,31 @@
         // 題目資料
         const questions = [
             // 範例題
-            { type: 'example', chinese: '紅色', taiwanese: 'âng-sik', image: 'color00', question_taiwanese: '紅色 âng-sik', options: ['âng-sik', 'hông-sik'], correct: 0 },
+            { type: 'example', chinese: '紅色', taiwanese: 'âng-sik', image: 'color00', question_taiwanese: '紅色 âng-sik', options: ['hông-sik', 'âng-sik'], correct: 1 },
             // Round 1
-            { type: 'question', num: 1, chinese: '膚色', taiwanese: 'bah-sik', image: 'color01', question_taiwanese: '肉色 bah-sik', options: ['bah-sik', 'hu-sik'], correct: 0 },
+            { type: 'question', num: 1, chinese: '膚色', taiwanese: 'bah-sik', image: 'color01', question_taiwanese: '肉色 bah-sik', options: ['hu-sik', 'bah-sik'], correct: 1 },
             { type: 'question', num: 2, chinese: '米白色', taiwanese: 'bí-sik', image: 'color02', question_taiwanese: '米色 bí-sik', options: ['bí-sik', 'bí-pe̍h-sik'], correct: 0 },
-            { type: 'question', num: 3, chinese: '乳白色', taiwanese: 'gû-ling-sik', image: 'color03', question_taiwanese: '牛奶色 gû-ling-sik', options: ['gû-ling-sik', 'ling-pe̍h-sik'], correct: 0 },
+            { type: 'question', num: 3, chinese: '乳白色', taiwanese: 'gû-ling-sik', image: 'color03', question_taiwanese: '牛奶色 gû-ling-sik', options: ['ling-pe̍h-sik', 'gû-ling-sik'], correct: 1 },
             { type: 'buzzer', num: 4, chinese: '肉色', taiwanese: 'bah-sik', image: 'color04', sentence: '伊穿彼領<span class="buzzer-blank"></span>的褲，有夠歹看！', hint: '她穿那件膚色的褲子，有夠難看' },
             { type: 'buzzer', num: 5, chinese: '紅色', taiwanese: 'âng-sik', image: 'color05', sentence: '彼領<span class="buzzer-blank"></span>的洋裝上影目！', hint: '那件紅色的洋裝最醒目' },
             { type: 'buzzer', num: 6, chinese: '米色', taiwanese: 'bí-sik', image: 'color06', sentence: '聽人講穿<span class="buzzer-blank"></span>的衫，看去來較大箍', hint: '聽說穿米白色的衣服顯胖' },
             // Round 2
-            { type: 'question', num: 7, chinese: '黃褐色/牛糞色', taiwanese: 'gû-sái-sik', image: 'color07', question_taiwanese: '牛屎色 gû-sái-sik', options: ['gû-sái-sik', 'n̂g-àm-sik'], correct: 0 },
-            { type: 'question', num: 8, chinese: '咖啡色', taiwanese: 'ka-pi-sik', image: 'color08', question_taiwanese: '咖啡色 ka-pi-sik', options: ['ka-pi-sik', 'kha-pi-sik'], correct: 0 },
+            { type: 'question', num: 7, chinese: '黃褐色/牛糞色', taiwanese: 'gû-sái-sik', image: 'color07', question_taiwanese: '牛屎色 gû-sái-sik', options: ['n̂g-àm-sik', 'gû-sái-sik'], correct: 1 },
+            { type: 'question', num: 8, chinese: '咖啡色', taiwanese: 'ka-pi-sik', image: 'color08', question_taiwanese: '咖啡色 ka-pi-sik', options: ['kha-pi-sik', 'ka-pi-sik'], correct: 1 },
             { type: 'question', num: 9, chinese: '橙色/橘黃色', taiwanese: 'kam-á-sik', image: 'color09', question_taiwanese: '柑仔色 kam-á-sik', options: ['kam-á-sik', 'tshîng-á-sik'], correct: 0 },
             { type: 'buzzer', num: 10, chinese: '牛奶色', taiwanese: 'gû-ling-sik', image: 'color10', sentence: '房間漆<span class="buzzer-blank"></span>的，看起來較光！', hint: '房間漆乳白色，看起來比較亮' },
             { type: 'buzzer', num: 11, chinese: '牛屎色', taiwanese: 'gû-sái-sik', image: 'color11', sentence: '楓仔葉的色水佇秋天會變做<span class="buzzer-blank"></span>', hint: '楓葉的顏色在秋天會變成黃褐色' },
             { type: 'buzzer', num: 12, chinese: '咖啡色', taiwanese: 'ka-pi-sik', image: 'color12', sentence: '阿母刺一領<span class="buzzer-blank"></span>膨紗衫予我', hint: '媽媽織了一件咖啡色的毛衣給我' },
             // Round 3
             { type: 'question', num: 13, chinese: '深藍色', taiwanese: 'khóng-sik', image: 'color13', question_taiwanese: '紺色 khóng-sik', options: ['khóng-sik', 'nâ-sik'], correct: 0 },
-            { type: 'question', num: 14, chinese: '紫色', taiwanese: 'kiô-á-sik', image: 'color14', question_taiwanese: '茄仔色 kiô-á-sik', options: ['kiô-á-sik', 'tsí-sik'], correct: 0 },
+            { type: 'question', num: 14, chinese: '紫色', taiwanese: 'kiô-á-sik', image: 'color14', question_taiwanese: '茄仔色 kiô-á-sik', options: ['tsí-sik', 'kiô-á-sik'], correct: 1 },
             { type: 'question', num: 15, chinese: '暗紅色', taiwanese: 'ti-kuann-sik', image: 'color15', question_taiwanese: '豬肝色 ti-kuann-sik', options: ['ti-kuann-sik', 'àm-âng-sik'], correct: 0 },
             { type: 'buzzer', num: 16, chinese: '柑仔色', taiwanese: 'kam-á-sik', image: 'color16', sentence: '彼隻<span class="buzzer-blank"></span>的鳥仔真罕得看著！', hint: '那隻橘色的鳥真罕見' },
             { type: 'buzzer', num: 17, chinese: '茄仔色', taiwanese: 'kiô-á-sik', image: 'color17', sentence: '香浴草的花是<span class="buzzer-blank"></span>的', hint: '薰衣草的花是紫色的' },
             { type: 'buzzer', num: 18, chinese: '紺色', taiwanese: 'khóng-sik', image: 'color18', sentence: '<span class="buzzer-blank"></span>予人感覺足神秘的', hint: '深藍色讓人覺得很神祕' },
             // Round 4
             { type: 'question', num: 19, chinese: '墨綠/深綠色', taiwanese: 'kim-ku-li̍k', image: 'color19', question_taiwanese: '金龜綠 kim-ku-li̍k', options: ['kim-ku-li̍k', 'tshim-li̍k'], correct: 0 },
-            { type: 'question', num: 20, chinese: '綠色', taiwanese: 'tshenn-sik', image: 'color20', question_taiwanese: '青色 tshenn-sik', options: ['tsháu-sik', 'tshenn-sik'], correct: 1 },
+            { type: 'question', num: 20, chinese: '綠色', taiwanese: 'tshenn-sik', image: 'color20', question_taiwanese: '青色 tshenn-sik', options: ['tshenn-sik', 'tsháu-sik'], correct: 0 },
             { type: 'buzzer', num: 21, chinese: '豬肝色', taiwanese: 'ti-kuann-sik', image: 'color21', sentence: '彼个演員的胭脂是<span class="buzzer-blank"></span>的，誠驚人', hint: '那個演員的唇膏是暗紅色的，很嚇人' },
             { type: 'buzzer', num: 22, chinese: '金龜綠', taiwanese: 'kim-ku-li̍k', image: 'color22', sentence: '陸軍軍車的色水攏是以<span class="buzzer-blank"></span>的為主', hint: '陸軍軍車的顏色都是以墨綠為主' },
             { type: 'buzzer', num: 23, chinese: '青色', taiwanese: 'tshenn-sik', image: 'color23', sentence: '<span class="buzzer-blank"></span>的草埔予人看囉心情誠好', hint: '綠色的草皮讓人看得心情很好' }
