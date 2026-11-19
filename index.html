@@ -2237,6 +2237,8 @@
             z-index: 10000;
         }
 
+        /* 點圖播讀音 */
+        .tv-screen, .tv-screen img, .buzzer-image-container { cursor: pointer; }
     </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
@@ -2796,5 +2798,35 @@
         });
     </script>
 <script>/* 預載圖片（拆圖版新增；不影響版面與流程） */window.addEventListener("load",function(){try{["img/color00.jpg", "img/color01.jpg", "img/color02.jpg", "img/color03.jpg", "img/color04.jpg", "img/color05.jpg", "img/color06.jpg", "img/color07.jpg", "img/color08.jpg", "img/color09.jpg", "img/color10.jpg", "img/color11.jpg", "img/color12.jpg", "img/color13.jpg", "img/color14.jpg", "img/color15.jpg", "img/color16.jpg", "img/color17.jpg", "img/color18.jpg", "img/color19.jpg", "img/color20.jpg", "img/color21.jpg", "img/color22.jpg", "img/color23.jpg", "img/pronounceOverlay.jpg", "img/title-img-landscape.png", "img/title-img-portrait.png"].forEach(function(u){var i=new Image();i.src=u;});}catch(e){}});</script>
+<script src="https://cyril-mingdao.github.io/taigi-class-games/assets/snd-plus.js"></script>
+<script>
+/* 點圖播正確讀音 image-audio */
+/* 題目頁、範例題、搶答頁：點圖片播「正確選項」讀音。
+   先播教育部《臺灣台語常用詞辭典》官方錄音；辭典查無整詞錄音（或音檔載入失敗）時，改用自製 snd-plus.js 組合音。 */
+(function () {
+    var MAP = {"q|紅色":["âng-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/5/5393.mp3"],"q|膚色":["bah-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/2/2654.mp3"],"q|米白色":["bí-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/2/2653.mp3"],"q|乳白色":["gû-ling-sik",""],"b|肉色":["bah-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/2/2654.mp3"],"b|紅色":["âng-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/5/5393.mp3"],"b|米色":["bí-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/2/2653.mp3"],"q|黃褐色/牛糞色":["gû-sái-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/1/1249.mp3"],"q|咖啡色":["ka-pi-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/3/3729.mp3"],"q|橙色/橘黃色":["kam-á-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/5/5088.mp3"],"b|牛奶色":["gû-ling-sik",""],"b|牛屎色":["gû-sái-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/1/1249.mp3"],"b|咖啡色":["ka-pi-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/3/3729.mp3"],"q|深藍色":["khóng-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/7/7741.mp3"],"q|紫色":["kiô-á-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/5/5462.mp3"],"q|暗紅色":["ti-kuann-sik",""],"b|柑仔色":["kam-á-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/5/5088.mp3"],"b|茄仔色":["kiô-á-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/5/5462.mp3"],"b|紺色":["khóng-sik","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/7/7741.mp3"],"q|墨綠/深綠色":["kim-ku-li̍k","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/4/4653.mp3"],"q|綠色":["tshenn-sik",""],"b|豬肝色":["ti-kuann-sik",""],"b|金龜綠":["kim-ku-li̍k","https://sutian.moe.edu.tw/media/senn/mp3/imtong/subak/4/4653.mp3"],"b|青色":["tshenn-sik",""]};
+    var au = null, token = 0;
+    function sndPlus(tl) { if (window.MdSnd) window.MdSnd.play(null, tl); }
+    function playWord(kind, alt) {
+        var w = MAP[kind + '|' + alt] || MAP[(kind === 'q' ? 'b' : 'q') + '|' + alt];
+        if (!w) return;
+        var my = ++token;
+        if (au) { try { au.pause(); } catch (e) {} }
+        if (window.MdSnd) window.MdSnd.stop();
+        if (!w[1]) { sndPlus(w[0]); return; }
+        au = au || new Audio();
+        au.onerror = function () { if (my === token) sndPlus(w[0]); };
+        au.src = w[1];
+        var p = au.play();
+        if (p && p.catch) p.catch(function (err) { if (my === token && err && err.name !== 'AbortError') sndPlus(w[0]); });
+    }
+    document.addEventListener('click', function (e) {
+        var box = e.target.closest && e.target.closest('.tv-screen, .buzzer-image-container');
+        if (!box) return;
+        var img = box.querySelector('img');
+        if (img) playWord(box.classList.contains('tv-screen') ? 'q' : 'b', img.getAttribute('alt') || '');
+    }, true);
+})();
+</script>
 </body>
 </html>
